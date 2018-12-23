@@ -231,6 +231,7 @@ dialog.oncancel = function () {
         delete UE.plugins[thePlugins].editdom;
     }
 };
+
 dialog.onok = function (){
     if($G('orgname').value == '') {
         alert('控件名称不能为空');
@@ -259,6 +260,7 @@ dialog.onok = function (){
     }
     if( !oNode ) {
         try {
+
             oNode = createElement('input','leipiNewField');
             oNode.setAttribute('title',gTitle);
             oNode.setAttribute('name','leipiNewField');
@@ -273,7 +275,7 @@ dialog.onok = function (){
             try {
                 editor.execCommand('error');
             } catch ( e ) {
-                alert('控件异常，请到 [雷劈网] 反馈或寻求帮助！');
+                alert('控件异常，请反馈或寻求帮助！');
             }
             return false;
         }

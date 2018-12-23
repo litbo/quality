@@ -165,7 +165,7 @@ UE.plugins['macros'] = function () {
  * ```javascript
  * editor.execCommand( 'radio');
  * ```
-
+ */
 UE.plugins['radio'] = function () {
     var me = this,thePlugins = 'radio';
     me.commands[thePlugins] = {
@@ -230,7 +230,7 @@ UE.plugins['radio'] = function () {
         }
     });
 };
- */
+
 
 /**
  * 复选框

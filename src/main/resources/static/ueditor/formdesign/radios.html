@@ -121,10 +121,10 @@ function fnAddComboTr(gName,obj)
 }
 function fnAdd() {
     var dName = $G('hidname').value;
-    if(!dName) dName = 'NEWFIELD';
+    if(!dName) dName = $G('fieldname').value;
     fnAddComboTr(dName,{
         "checked":false,
-        "name":'NEWFIELD',
+        "name":$G('fieldname').value,
         "value":''
     });
 }
@@ -259,14 +259,14 @@ dialog.onok = function (){
 
     if( !oNode ) {
         try {
-            var options = fnParseOptions("NEWFIELD",gChecked);
+            var options = fnParseOptions($G('fieldname').value,gChecked);
             if(!options)
             {
                 alert('请添加选项');
                 return false;
             }
             //{|- 使用边界，防止用户删除了span标签
-            var html = '<span plugins="radios" title="'+gTitle+'" name="NEWFIELD" fieldname="' + gName + '" fieldflow="' + gFlow + '">';
+            var html = '<span plugins="radios" title="'+gTitle+'" name="' + gName + '" fieldname="' + gName + '" fieldflow="' + gFlow + '">';
                 html +=options;
                 html +='</span>';
             editor.execCommand('insertHtml',html);
