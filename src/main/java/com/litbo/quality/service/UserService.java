@@ -2,6 +2,7 @@ package com.litbo.quality.service;
 
 import com.litbo.quality.vo.UserInfo;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,5 +24,14 @@ public interface UserService {
      * @return
      */
     public List<UserInfo> getUserInfoList();
+
+    /**
+     * 获取用户检测工作量
+     * @param username
+     * @param baginTime
+     * @param endTime
+     * @return
+     */
+    public List<UserInfo> getUserYqJcbb(String username, Date baginTime, Date endTime);
 
 }

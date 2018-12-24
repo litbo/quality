@@ -17,4 +17,6 @@ public class UserInfo {
 
     private Map<Integer, List<String>> roleMap;
 
+    private Integer count; //工作量
+
 }

@@ -5,7 +5,6 @@ import com.litbo.quality.dao.provider.UserProvider;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.SelectProvider;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,8 +21,7 @@ public interface UserDao {
     @SelectProvider(type = UserProvider.class,method = "getUser")
     public SUser getUser(String userId);
 
-    @SelectProvider(type = UserProvider.class,method = "getUser")
-    public List<SUser> getUser(String userId, String eqId, Date beginTime, Date endTime);
-
+    @SelectProvider(type = UserProvider.class,method = "")
+    public List<SUser> getUserLike(String userName);
 
 }
