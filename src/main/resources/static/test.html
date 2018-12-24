@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script language="javascript" type="text/javascript">
+         function test() {
+            var test=document.getElementsByTagName('p')[0].innerHTML;
+            alert(test);
+        }
+    </script>
 </head>
 <body>
-<img id="qrious">
-<script src="js/qrious/qrious.min.js"></script>
-<script>
-    var qr = new QRious({
-        element:document.getElementById('qrious'),
-        size:250,
-        level:'H',
-        value:'http://10.241.108.77:8080/jw/web/login'
-    });
-</script>
+<p>
+    <span title="123" fieldname="jg" fieldflow="0" name="jg" plugins="radios"><input name="jg" type="radio" value="合适"/>合适&nbsp;<input name="jg" type="radio" value="不合适"/>不合适&nbsp;</span><span title="123" fieldname="jg1" fieldflow="0" name="jg1" plugins="radios"><input name="jg1" type="radio" value="tets"/>tets&nbsp;<input name="jg1" type="radio" value="haha"/>haha&nbsp;</span>
+<input type="text" name="te"></p>
+<input id="test" type="button" onclick="test()" value="按钮">
 </body>
 </html>
