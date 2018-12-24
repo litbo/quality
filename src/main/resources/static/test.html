@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="qrious">
+<script src="js/qrious/qrious.min.js"></script>
+<script>
+    var qr = new QRious({
+        element:document.getElementById('qrious'),
+        size:250,
+        level:'H',
+        value:'http://10.241.108.77:8080/jw/web/login'
+    });
+</script>
+</body>
+</html>
