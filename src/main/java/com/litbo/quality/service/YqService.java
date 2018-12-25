@@ -1,5 +1,6 @@
 package com.litbo.quality.service;
 
+import com.litbo.quality.bean.Yq;
 import com.litbo.quality.vo.YqEqInfo;
 
 import java.util.List;
@@ -15,5 +16,11 @@ public interface YqService {
      * @param eqId
      * @return
      */
-    public List<YqEqInfo> getYqEqInfoList(String eqId);
+    List<YqEqInfo> getYqEqInfoList(String eqId);
+
+    List listYq();
+
+    Yq selectYqById(Integer jcbbId);
+
+    int insertYq(Yq yq);
 }
