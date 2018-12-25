@@ -47,7 +47,7 @@ public interface UserDao {
     })
     public List<SUser> getUserByRole(@Param("userIds") List<String> userIds);
 
-    //根据设备及权限查询所有用户并判断是否有检测该用户的权限
+    //根据设备及权限查询所有用户并判断是否有检测该设备的权限
     @Select("SELECT u.user_id,u.user_name,s.id from s_user u  " +
             "LEFT  JOIN (SELECT user_id , id from yq_role where role_status = #{roleStatus} and eq_id = #{eqId}) s  " +
             "ON s.user_id = u.user_id")
