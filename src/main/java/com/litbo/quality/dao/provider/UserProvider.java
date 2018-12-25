@@ -9,14 +9,11 @@ import org.apache.ibatis.jdbc.SQL;
  */
 public class UserProvider {
 
-    public String getUser(String userId,String userName){
+    public String getUserLike(String userName){
         return new SQL(){
             {
                 SELECT("*");
                 FROM("s_user");
-                if(StringUtils.isNotBlank(userId)){
-                    WHERE("user_id = #{userId}");
-                }
                 if(StringUtils.isNotBlank(userName)){
                     WHERE("user_name like %#{userName}%");
                 }

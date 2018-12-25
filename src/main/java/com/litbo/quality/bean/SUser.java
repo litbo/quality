@@ -1,7 +1,7 @@
 package com.litbo.quality.bean;
 
 public class SUser {
-    private String userId;
+        private String userId;
 
     private String userName;
 

@@ -1,8 +1,7 @@
 package com.litbo.quality.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import com.litbo.quality.bean.YqRole;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -25,4 +24,24 @@ public interface YqRoleDao {
     //查询用户拥有的权限
     @Select("select distinct role_status from yq_role where user_id = #{userId}")
     public List<Integer> getRole(String userId);
+
+    //查询权限是status的人
+    @Select("select user_id from yq_role where role_status == roleStatus")
+    public List<String> getYqRole(int roleStatus);
+
+    //查询所有指定设备的检测或审核人员
+    @Select("select user_id from yq_role where eq_id = #{eqId} and role_status = #{roleStatus}")
+    public List<String> getUserIdsByeqId(String eqId,Integer roleStatus);
+
+    //删除
+    @Delete("delete from yq_role where user_id = #{userId} and eq_id = #{eqId} and role_status = #{roleStatus}")
+    public void deleteYqRole(YqRole yqRole);
+
+    //添加
+    @Insert("insert into yq_role (user_id, role_status, \n" +
+            "      eq_id)\n" +
+            "    values ( #{userId,jdbcType=VARCHAR}, #{roleStatus,jdbcType=INTEGER}, \n" +
+            "      #{eqId,jdbcType=VARCHAR})")
+    public void addYqRole(YqRole yqRole);
+
 }

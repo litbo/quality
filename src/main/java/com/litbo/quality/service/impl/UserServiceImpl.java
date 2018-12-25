@@ -1,13 +1,18 @@
 package com.litbo.quality.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.litbo.quality.bean.SUser;
+import com.litbo.quality.bean.YqRole;
 import com.litbo.quality.dao.UserDao;
 import com.litbo.quality.dao.YqJcbbDao;
 import com.litbo.quality.dao.YqRoleDao;
 import com.litbo.quality.service.UserService;
 import com.litbo.quality.vo.UserInfo;
+import com.litbo.quality.vo.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -57,21 +62,51 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserInfo> getUserYqJcbb(String username, Date baginTime, Date endTime) {
+    public List<UserInfo> getUserYqJcbb(String username, Date baginTime, Date endTime,
+                                        Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
         List<SUser> userList = userDao.getUserLike(username);
+        PageInfo<SUser> pageInfo = new PageInfo<>(userList);
         List<UserInfo> list = new ArrayList();
-        for (SUser sUser : userList) {
+        for (SUser sUser : pageInfo.getList()) {
             UserInfo userInfo = new UserInfo();
-            List<String> eqName = yqRoleDao.getRoleEqName(sUser.getUserId(), 2);
-            userInfo.setSUser(sUser);
-            HashMap hashMap = new HashMap();
-            hashMap.put(2,eqName);
-            userInfo.setRoleMap(hashMap);
-            int count = yqJcbbDao.getYqJcbbCount(sUser.getUserId(), baginTime, endTime);
-            userInfo.setCount(count);
-            list.add(userInfo);
+            List<Integer> role = yqRoleDao.getRole(sUser.getUserId());
+            if(role.contains(2)){
+                List<String> eqName = yqRoleDao.getRoleEqName(sUser.getUserId(), 2);
+                userInfo.setSUser(sUser);
+                HashMap hashMap = new HashMap();
+                hashMap.put(2,eqName);
+                userInfo.setRoleMap(hashMap);
+                int count = yqJcbbDao.getYqJcbbCount(sUser.getUserId(), baginTime, endTime);
+                userInfo.setCount(count);
+                list.add(userInfo);
+            }
         }
         return list;
+    }
+
+    @Override
+    public void addUser(SUser user) {
+        user.setStatus(1);
+        userDao.addUser(user);
+    }
+
+    @Override
+    public List<UserRole> getUserRoleStatus(String eqId ,Integer roleStatus) {
+        List<UserRole> userRoles = userDao.getUserRole(eqId, roleStatus);
+        return userRoles;
+    }
+
+    @Override
+    @Transactional
+    public void addYqRole(YqRole yqRole) {
+        yqRoleDao.addYqRole(yqRole);
+    }
+
+    @Override
+    @Transactional
+    public void deleteYqRole(YqRole yqRole) {
+        yqRoleDao.deleteYqRole(yqRole);
     }
 
 

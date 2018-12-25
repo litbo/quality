@@ -17,7 +17,7 @@ public class YqJcbbProvider {
                 SELECT("count(*)");
                 FROM("yq_jcbb");
                 if(StringUtils.isNotBlank(userId)){
-                    WHERE("user_id = #{userId}");
+                    WHERE("jcbb_jcr_id = #{userId}");
                 }
                 if(beginTime != null){
                     WHERE("jcbb_create_time >= #{beginTime}");
