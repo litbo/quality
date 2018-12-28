@@ -1,6 +1,5 @@
 //radio选中改变颜色
 function cColor() {
-    //if($(this).children("input").attr("disabled") !== "true" && $(this).children("input").attr("disabled") !== "disabled" ){
     var bgColor = "#fff";
     switch (this.className) {
         case "ck":
@@ -15,7 +14,6 @@ function cColor() {
     }
     $(this).siblings().css("background", "#fff").css("color", "#000");
     $(this).css("background", bgColor).css("color", "#fff");
-    //}
 }
 
 //按照公式计算得出正确与否-默认公式
@@ -33,10 +31,8 @@ function checkValue(prevValue, thisValue, point) {
 //判断是否前比后大
 function mmCompere(prevValue, thisValue, point) {
     //console.log(arguments);
-    if (Math.abs(Number(prevValue) - Number(thisValue)) <= point) {
-        return true;
-    }
-    return false;
+    return Math.abs(Number(prevValue) - Number(thisValue)) <= point;
+
 }
 
 //表格渲染与功能添加
@@ -90,7 +86,6 @@ function tableGet(elem, data) {
                                 } else {
                                     sd = data[s_i].value[s_p].check
                                 }
-                                sd
                                 for (var i = 0; i < sd.length; i++) {
                                     var me = $(this).parent().prev().children("td"), nu = 0;
                                     //console.log(me);
@@ -104,13 +99,14 @@ function tableGet(elem, data) {
                                     }
                                     //当不适用未选中时渲染颜色
                                     if (!me.find("label[class='no']").find("input").attr("checked")) {
-                                        if (sd[i] === false) {
-                                            me.find("label[class='nck']").eq(nu).siblings().css("background", "#fff").css("color", "#000");
-                                            me.find("label[class='nck']").eq(nu).css("background", "#f23232").css("color", "#fff");
+                                        me.find("label[class='nck']").eq(nu).siblings().css("background", "#fff").css("color", "#000");
+                                        var mes = me.find("label[class='nck']").eq(nu);
+                                            mes.css("color", "#fff");
+                                        if(sd[i] === false) {
+                                            mes.css("background", "#f23232");
                                             break;
                                         } else {
-                                            me.find("label[class='ck']").eq(nu).siblings().css("background", "#fff").css("color", "#000");
-                                            me.find("label[class='ck']").eq(nu).css("background", "#55ec55").css("color", "#fff");
+                                            mes.css("background", "#55ec55");
                                         }
                                     }
                                 }
@@ -155,15 +151,14 @@ function tableGet(elem, data) {
                             }).append(data[i].check.txt + tras)
                             //创建单选按钮
                             for (var j = 0; j < data[i].check.radio.length; j++) {
-                                var ck = false;
+                                var ck = false;//
                                 var dis = true;//禁止用户点击按钮
                                 var rd = "radio";
                                 if (data[i].check.on === j) {
                                     ck = true;
                                 }
                                 if (data[i].check.attr[j + 1] === "no") {
-                                    dis = false;//不可点击 不适用
-                                    rd = "radio"
+                                    dis = false;//不可点击 "不适用"
                                 }
                                 tds.append(
                                     $("<label>").attr("class", data[i].check.attr[j + 1]).append(
@@ -191,7 +186,6 @@ function tableGet(elem, data) {
                                                     break;
                                             }
                                         }
-
                                     })
                                 )
                             }
@@ -277,6 +271,7 @@ function tableGet(elem, data) {
 
 //ajax数据获取
 function jQajax(subData) {
+    //使用外部函数形式获取异步数据
     var datas = function (callback) {
         $.ajax({
             url: "./data.php",
@@ -286,10 +281,14 @@ function jQajax(subData) {
         })
     }
     datas(function (data) {
-        if (data === "success") {
-            alert("保存成功！");
-        } else {
-            tableGet("#table", JSON.parse(data));
+        if (data.msg === "success") {
+            if(data[0]){
+                tableGet("#table", JSON.parse(data.data));
+            }else{
+                alert("保存成功！");
+            }
+        }else{
+            alert("数据保存失败，请重新提交！");
         }
     })
 }
