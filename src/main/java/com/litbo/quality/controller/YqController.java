@@ -6,10 +6,7 @@ import com.litbo.quality.utils.CodeMsg;
 import com.litbo.quality.utils.Result;
 import com.litbo.quality.vo.YqEqInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -63,12 +60,39 @@ public class YqController {
     }
 
     @RequestMapping(value = "selectYqById",method = RequestMethod.GET)
-    public Result selectYqById(Integer jcbbId) {
+    public Result selectYqById(int jcyqId) {
         try {
-            return Result.success(yqService.selectYqById(jcbbId));
+            return Result.success(yqService.selectYqById(jcyqId));
         } catch (Exception e) {
             return Result.error();
         }
+    }
+    @RequestMapping(value = "updateYq",method = RequestMethod.POST)
+    public Result updateYq(Yq yq){
+        try {
+            Integer res = yqService.updateYq(yq);
+            if(res > 0 ){
+                return Result.success();
+            }else {
+                return Result.error(CodeMsg.SERVER_ERROR);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.error(CodeMsg.SERVER_ERROR);
+        }
+
+    }
+
+
+    @RequestMapping("taskYq")
+    public Result taskYq(){
+        try {
+            List list = yqService.taskYq();
+            return Result.success(list);
+        }catch (Exception e){
+            return Result.error(CodeMsg.SERVER_ERROR);
+        }
+
     }
 }
 

@@ -3,6 +3,7 @@ package com.litbo.quality.service.impl;
 
 import com.litbo.quality.dao.YqDao;
 import com.litbo.quality.service.YqService;
+import com.litbo.quality.vo.SelectTaskYq;
 import com.litbo.quality.vo.YqEqInfo;
 
 import com.github.pagehelper.PageInfo;
@@ -41,8 +42,19 @@ public class YqServiceImpl implements YqService {
     }
 
     @Override
-    public Yq selectYqById(Integer jcbbId) {
-        return yqDao.selectYqById(jcbbId);
+    public List<SelectTaskYq> taskYq() {
+        return yqDao.taskYq();
+    }
+
+    @Override
+    public Yq selectYqById(int jcyqId) {
+        return yqDao.selectYqById(jcyqId);
 
     }
+
+    @Override
+    public int updateYq(Yq yq) {
+        return yqDao.updateYq(yq);
+    }
+
 }

@@ -20,7 +20,11 @@ public interface YqService {
 
     List listYq();
 
-    Yq selectYqById(Integer jcbbId);
+    Yq selectYqById(int jcyqId);
 
     int insertYq(Yq yq);
+
+    int updateYq(Yq yq);
+
+    List taskYq();
 }

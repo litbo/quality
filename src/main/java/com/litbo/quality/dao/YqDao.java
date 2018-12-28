@@ -1,13 +1,13 @@
 package com.litbo.quality.dao;
 
 
+import com.litbo.quality.dao.provider.YqJcbbProvider;
+import com.litbo.quality.dao.provider.YqProvider;
+import com.litbo.quality.vo.SelectTaskYq;
 import com.litbo.quality.vo.YqEqInfo;
 
 import com.litbo.quality.bean.Yq;
-import org.apache.ibatis.annotations.Insert;
-
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -25,9 +25,9 @@ public interface YqDao {
     List<YqEqInfo> getYqEq(String eqId);
 
     @Select("select * from yq")
-    List listYq();
-    @Select("select * from yq where jcbb_id = #{jcbbId}")
-    Yq selectYqById(Integer jcbbId);
+    List<Yq> listYq();
+    @Select("select * from yq where jcyq_id = #{jcyqId}")
+    Yq selectYqById(int jcyqId);
     @Insert("    insert into yq (jcyq_name, jcyq_xh, \n" +
             "      jcyq_xzzq_time, jcyq_dah, jcyq_bh, \n" +
             "      jcyq_cj_id, jcyq_qy_time, jcyq_ks_id, \n" +
@@ -39,4 +39,8 @@ public interface YqDao {
             "      #{jcyqCf,jdbcType=VARCHAR}, #{jcyqUrl,jdbcType=VARCHAR}, #{jcyqJzTime,jdbcType=TIMESTAMP}\n" +
             "      )")
     int insertYq(Yq yq);
+    @UpdateProvider(type = YqProvider.class, method = "updateYq")
+    int updateYq(Yq yq);
+    @SelectProvider(type = YqProvider.class, method = "taskYq")
+    List<SelectTaskYq> taskYq();
 }

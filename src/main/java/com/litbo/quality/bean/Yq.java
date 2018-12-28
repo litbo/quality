@@ -6,13 +6,13 @@ import java.util.Date;
 
 @Data
 public class Yq {
-    private Integer jcbbId;
+    private Integer jcyqId;
 
     private String jcyqName;
 
     private String jcyqXh;
 
-    private float jcyqXzzqTime;
+    private Float jcyqXzzqTime;
 
     private String jcyqDah;
 
