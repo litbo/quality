@@ -13,7 +13,7 @@ public class YqMould {
 
     private Integer mbStatus;
 
-    private String mbText;
+    private String data;
 
 
 }

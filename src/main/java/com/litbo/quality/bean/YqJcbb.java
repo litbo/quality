@@ -19,7 +19,7 @@ public class YqJcbb {
 
     private Integer jcbbShStatus;
 
-    private String jcbbText;
+    private String data;
 
 
 }
