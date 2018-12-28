@@ -36,7 +36,7 @@ function mmCompere(prevValue, thisValue, point) {
 }
 
 //表格渲染与功能添加
-function tableGet(elem, data) {
+function tableGet(elem, data,all) {
     function checkRadio(nub, num) {
         data[nub].check.on = num;
     }
@@ -265,7 +265,8 @@ function tableGet(elem, data) {
     }
     //console.log(data);
     $("#submit").on('click', function () {
-        jQajax({action: "send", data: JSON.stringify(data)});
+        all.data.data = data;
+        jQajax({action: "send", data: JSON.stringify(all)});
     });
 }
 
@@ -283,7 +284,7 @@ function jQajax(subData) {
     datas(function (data) {
         if (data.msg === "success") {
             if(data.data.mbId){
-                tableGet("#table", JSON.parse(data.data.data));
+                tableGet("#table", JSON.parse(data.data.data),data);
             }else{
                 alert("保存成功！");
             }
