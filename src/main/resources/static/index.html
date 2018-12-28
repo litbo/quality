@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>设备检测</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="stylesheet" href="assets/css/amazeui.min.css">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="main.js"></script>
+    <style>
+        body {
+            padding: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            line-height: 2.5;
+        }
+
+        .t_title {
+            font-weight: 600;
+        }
+
+        .td_end label {
+            border-radius: 5px;
+            padding: 0 5px;
+        }
+
+        tbody {
+            border-bottom: 2px solid #ccc
+        }
+
+        .t_radio {
+            max-width: 300px;
+            background: #fff !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="am-scrollable-horizontal">
+    <h1>多参数监护仪质量检测原始记录表（新生儿）</h1>
+    <table class="am-table am-table-bordered am-table-centered am-table-striped" id="table">
+
+    </table>
+</div>
+<a href="javascript:void(0);" id="submit" class="am-btn am-btn-primary am-radius am-btn-xl am-btn-block">提交</a>
+<script>
+    /*var data = [
+        {
+            "fixed":false,
+            "name": {
+                "title": "心率",
+                "tip": "(次/min)"
+            },
+            "value": [
+                {
+                    "main":true,
+                    "title": "测试点",
+                    "data": [30, 60, 100, 120, 180]
+                },
+                {
+                    "title": "实测值",
+                    "edit":true,
+                    "data": ["", "", "", "", ""],
+                    "check":[]
+                }
+            ],
+            "check":{
+                "txt":"允许误差：±5%",
+                "num":"5",
+                "attr":["check1","ck","nck","no"],
+                "radio":["符合","不符合","不适用"],
+                "on":false
+            }
+        },
+        {
+            "fixed":false,
+            "name": {
+                "title": "呼吸率",
+                "tip": "(次/min)"
+            },
+            "value": [
+                {
+                    "main":true,
+                    "title": "测试点",
+                    "data": [15, 20, 40, 60, 80]
+                },
+                {
+                    "title": "实测值",
+                    "edit":true,
+                    "data": ["", "", "", "", ""],
+                    "check":[]
+                }
+            ],
+            "check":{
+                "txt":"允许误差：±5%",
+                "num":"5",
+                "attr":["check2","ck","nck","no"],
+                "radio":["符合","不符合","不适用"],
+                "on":false
+            }
+        },
+        {
+            "fixed":false,
+            "name": {
+                "title": "无创血压",
+                "tip": "(mmHg)"
+            },
+            "value": [
+                {
+                    "main":true,
+                    "title": "测试点",
+                    "data": ["35/15(22)","48/22(31)", "57/32(40)", "70/40(50)", "90/60(70)"]
+                },
+                {
+                    "title": "实测值1",
+                    "edit":true,
+                    "data": ["", "", "", "", ""],
+                    "check":[]
+                },
+                {
+                    "title": "实测值2",
+                    "edit":true,
+                    "data": ["", "", "", "", ""],
+                    "check":[]
+                },
+                {
+                    "title": "实测值3",
+                    "edit":true,
+                    "data": ["", "", "", "", ""],
+                    "check":[]
+                }
+            ],
+            "check":{
+                "txt":"1:重复性误差误差：(3次收缩压/舒张压最大值与最小值之差)<=8.5mmHg",
+                "num":"8.5",
+                "fuc":"add3",
+                "attr":["check3","ck","nck","no"],
+                "radio":["符合","不符合","不适用"],
+                "on":false
+            }
+        },
+        {
+            "fixed":false,
+            "name": {
+                "title": "血氧饱和度",
+                "tip": "(%)"
+            },
+            "value": [
+                {
+                    "main":true,
+                    "title": "测试点",
+                    "data": [85, 88, 95, 98, 100]
+                },
+                {
+                    "title": "实测值",
+                    "edit":true,
+                    "data": ["", "", "", "", ""],
+                    "check":[]
+                }
+            ],
+            "check":{
+                "txt":"允许误差：±3%",
+                "num":"3",
+                "attr":["check4","ck","nck","no"],
+                "radio":["符合","不符合","不适用"],
+                "on":false
+            }
+        },
+        {
+            "fixed":false,
+            "number":0,
+            "name": {
+                "title": "无创血压静态示值",
+                "tip": "（mmHg）设定值150mmHg"
+            },
+            "value": [
+                {
+                    "main":true,
+                    "hideData":150,
+                    "edit":true,
+                    "title": "模拟器测量值",
+                    "data": [""],
+                    "check":[]
+                },
+                {
+                    "title": "监护仪测量值",
+                    "edit":true,
+                    "data": [""],
+                    "check":[]
+                }
+            ],
+            "check":{
+                "check":[],
+                "txt":"允许误差：±4mmHg",
+                "num":"4",
+                "fuc":"maxmin",
+                "attr":["check5","ck","nck","no"],
+                "radio":["符合","不符合","不适用"],
+                "on":false
+            }
+        },
+        {
+            "fixed":4,
+            "number":1,
+            "name": {
+                "title": "无创血压气密性",
+                "tip": ""
+            },
+            "value": [
+                {
+                    "main":true,
+                    "title": "设定值",
+                    "data": [250]
+                },
+                {
+                    "title": "泄露率测定值",
+                    "edit":true,
+                    "data": [""],
+                    "check":[]
+                }
+            ],
+            "check":{
+                "txt":"泄露率<=6mmHg/min",
+                "num":"6",
+                "attr":["check6","ck","nck","no"],
+                "radio":["符合","不符合","不适用"],
+                "on":false
+            }
+        },
+        {
+            "fixed":true,
+            "name": {
+                "title": "声光报警"
+            },
+            "check":{
+                "cols":2,
+                "attr":["check8","ck","nck"],
+                "radio":["符合","不符合"],
+                "on":false
+            }
+        },
+        {
+            "fixed":true,
+            "chain":6,
+            "name": {
+                "title": "报警限检查"
+            },
+            "check":{
+                "cols":2,
+                "attr":["check9","ck","nck"],
+                "radio":["符合","不符合"],
+                "on":false
+            }
+        },
+        {
+            "fixed":true,
+            "chain":6,
+            "name": {
+                "title": "静音检查"
+            },
+            "check":{
+                "cols":2,
+                "attr":["check7","ck","nck"],
+                "radio":["符合","不符合"],
+                "on":false
+            }
+        }
+    ];*/
+    $(function () {
+        jQajax({action: "get"});
+        var rads = $("input[type='radio']");
+        if (rads) {
+            for (var i = 0; i < rads.size(); i++) {
+                if (rads.eq(i).attr("checked") === true || rads.eq(i).attr("checked") === "checked") {
+                    cColor.apply(rads.eq(i).parent()[0]);
+                }
+            }
+        }
+    })
+</script>
+</body>
