@@ -282,8 +282,8 @@ function jQajax(subData) {
     }
     datas(function (data) {
         if (data.msg === "success") {
-            if(data[0]){
-                tableGet("#table", JSON.parse(data.data));
+            if(data.data.mbId){
+                tableGet("#table", JSON.parse(data.data.data));
             }else{
                 alert("保存成功！");
             }
