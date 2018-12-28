@@ -12,6 +12,7 @@
     <artifactId>quality</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>quality</name>
+    <packaging>jar</packaging>
     <description>质量检测</description>
 
     <properties>
@@ -106,17 +107,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <!-- swagger2 配置 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.4.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.4.0</version>
-        </dependency>
+
     </dependencies>
 
     <build>
