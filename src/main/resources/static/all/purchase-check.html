@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>设备检测</title>
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="./layui/layui.js"></script>
+    <style>
+        .layui-form-item {
+            margin: 5px 0;
+        }
+
+        .getHtml {
+            border: 1px dotted #ccc;
+            overflow: hidden;
+            margin: 0 15px 15px;
+        }
+    </style>
+</head>
+<body>
+
+
+<ul id="demo"></ul>
+
+<form class="layui-form">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>被检测设备基本信息</legend>
+    </fieldset>
+    <div class="layui-row" style="padding:15px;">
+        <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">设备名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">使用科室</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">档案号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">机身编码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">品牌</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">型号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">启用日期</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>检测数据</legend>
+    </fieldset>
+    <div id="getHtml">
+        <div class="layui-col-xs12" style="padding:0 20px;">
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">仪器1</li>
+                    <li>仪器2</li>
+                    <li>仪器3</li>
+                    <li>仪器4</li>
+                    <li>仪器5</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <iframe src="../record_list/dcsjhy_record_list/index.html" frameborder="0" style="width:100%;height:800px;"></iframe>
+                    </div>
+                    <div class="layui-tab-item">内容2</div>
+                    <div class="layui-tab-item">内容3</div>
+                    <div class="layui-tab-item">内容4</div>
+                    <div class="layui-tab-item">内容5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>检测设备基本信息</legend>
+    </fieldset>
+    <div class="layui-row" style="padding:15px;">
+        <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">仪器名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">机身编码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">档案号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">型号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+            <div class="layui-form-item">
+                <label class="layui-form-label">校准日期</label>
+                <div class="layui-input-block">
+                    <input type="text" name="" disabled autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="*">保存</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+    <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+</form>
+<script>
+    layui.use(['form', "tree", "jquery",'element'], function () {
+        var form = layui.form,element = layui.element, $ = layui.jquery,
+            jsonP = {
+                elem: "#demo", click: function (node) {
+                    $.ajax({
+                        url: "#",
+                        method: "GET",
+                        data: {me: node.name},
+                        success: function (data) {
+                            node.children = data;
+                        }
+                    })
+                }
+            };
+
+        $.ajax({
+            url: "#",
+            method: "GET",
+            data: {me: "getFirst"},
+            success: function (data) {
+                jsonP.nodes = data;
+            }
+        });
+
+        layui.tree(jsonP);
+
+        //各种基于事件的操作，下面会有进一步介绍
+    });
+</script>

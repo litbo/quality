@@ -87,7 +87,7 @@ function tableGet(elem, data,all) {
                                     sd = data[s_i].value[s_p].check
                                 }
                                 for (var i = 0; i < sd.length; i++) {
-                                    var me = $(this).parent().prev().children("td"), nu = 0;
+                                    var me = $(this).parent().parent().prev().children("td"), nu = 0;
                                     //console.log(me);
                                     //判断当前数据是不是分段合并数据
                                     if (data[s_i].number) {
@@ -95,7 +95,7 @@ function tableGet(elem, data,all) {
                                     }
                                     //判断当前数据行内的是否又隐式计算数据
                                     if (data[s_i].value[s_p].hideData) {
-                                        me = $(this).parent().children("td")
+                                        me = $(this).parent().parent().children("td")
                                     }
                                     //当不适用未选中时渲染颜色
                                     if (!me.find("label[class='no']").find("input").attr("checked")) {
@@ -135,13 +135,13 @@ function tableGet(elem, data,all) {
                                 (function (k) {
                                     trs.append(
                                         $("<td>").attr({
-                                            "style": clas,
-                                            "contenteditable": tf
-                                        }).append(data[i].value[0].data[k]).on('focus', function () {
-                                            ttx = $(this).text();
-                                        }).on('blur', function () {
-                                            blurFunc.call($(this), k);
-                                        })
+                                            "style": clas
+                                        }).append($("<div>").attr("contenteditable",tf).append(data[i].value[0].data[k]).on('focus', function () {
+                                                ttx = $(this).text();
+                                            }).on('blur', function () {
+                                                blurFunc.call($(this), k);
+                                            })
+                                        )
                                     )
                                 })(k)
                             }
@@ -204,11 +204,12 @@ function tableGet(elem, data,all) {
                                     var ttx = "";
                                     (function (f) {
                                         trs.append(
-                                            $("<td>").attr("contenteditable", "true").append(data[i].value[p].data[f]).on('focus', function () {
-                                                ttx = $(this).text();
-                                            }).on('blur', function () {
-                                                blurFunc.call($(this), f);
-                                            })
+                                            $("<td>").append($("<div>").attr("contenteditable", "true").append(data[i].value[p].data[f]).on('focus', function () {
+                                                    ttx = $(this).text();
+                                                }).on('blur', function () {
+                                                    blurFunc.call($(this), f);
+                                                })
+                                            )
                                         );
                                     })(f)
                                 }
