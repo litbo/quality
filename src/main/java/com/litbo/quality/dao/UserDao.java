@@ -18,6 +18,9 @@ public interface UserDao {
     @Select("select * from s_user")
     public List<SUser> getAllUser();
 
+    @Select("select * from s_user where user_name = #{username}")
+    public SUser getUserByUserName(String username);
+
     @Select("select * from s_user where user_id = #{userId}")
     public SUser getUser(String userId);
 

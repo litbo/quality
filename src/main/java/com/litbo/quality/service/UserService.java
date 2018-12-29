@@ -15,6 +15,26 @@ import java.util.List;
 public interface UserService {
 
     /**
+     * 获取用户权限
+     * @param userId
+     * @return
+     */
+    public List<String> userRole(String userId);
+
+    /**
+     * 根据userId获取用户管理的设备
+     * @param userId
+     * @return
+     */
+    public List<String> getRole(String userId);
+
+    /**
+     * 用于用户登陆
+     * @return
+     */
+    public SUser getUserByUserName(String username);
+
+    /**
      * 获取用户的信息
      * @param userId
      * @return
