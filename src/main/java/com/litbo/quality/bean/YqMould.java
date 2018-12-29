@@ -13,5 +13,7 @@ public class YqMould {
 
     private String data;
 
+    private String mbName;
+
 
 }

@@ -21,5 +21,4 @@ public class YqJcbb {
 
     private String data;
 
-
 }

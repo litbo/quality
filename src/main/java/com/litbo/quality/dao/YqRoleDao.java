@@ -50,6 +50,6 @@ public interface YqRoleDao {
             "      eq_id)\n" +
             "    values ( #{userId,jdbcType=VARCHAR}, #{roleStatus,jdbcType=INTEGER}, \n" +
             "      #{eqId,jdbcType=VARCHAR})")
-    public void addYqRole(YqRole yqRole);
+    void addYqRole(YqRole yqRole);
 
 }

@@ -7,6 +7,8 @@ import com.litbo.quality.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("mould")
 public class YqMouldController {
@@ -36,5 +38,14 @@ public class YqMouldController {
             return Result.error(CodeMsg.SERVER_ERROR);
         }
 
+    }
+    @RequestMapping(value = "listYqMould",method = RequestMethod.GET)
+    public Result listYqMould(){
+        try {
+            List<YqMould> moulds = mouldSerrvice.listYqMould();
+            return Result.success(moulds);
+        }catch (Exception e){
+            return Result.error(CodeMsg.SERVER_ERROR);
+        }
     }
 }
