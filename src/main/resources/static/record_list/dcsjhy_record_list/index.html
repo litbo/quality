@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>设备检测</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="stylesheet" href="../../assets/css/amazeui.min.css">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="main.js"></script>
+    <style>
+        body {
+            padding: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            line-height: 2.5;
+        }
+
+        .t_title {
+            font-weight: 600;
+        }
+
+        .td_end label {
+            border-radius: 5px;
+            padding: 0 5px;
+        }
+
+        tbody {
+            border-bottom: 2px solid #ccc
+        }
+
+        .t_radio {
+            max-width: 300px;
+            background: #fff !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="am-scrollable-horizontal">
+    <h1>多参数监护仪质量检测原始记录表（新生儿）</h1>
+    <table class="am-table am-table-bordered am-table-centered am-table-striped" id="table">
+
+    </table>
+</div>
+<a href="javascript:void(0);" id="submit" class="am-btn am-btn-primary am-radius am-btn-xl am-btn-block">提交</a>
+<script>
+    $(function () {
+        jQajax({action: "get"});
+        var rads = $("input[type='radio']");
+        if (rads) {
+            for (var i = 0; i < rads.size(); i++) {
+                if (rads.eq(i).attr("checked") === true || rads.eq(i).attr("checked") === "checked") {
+                    cColor.apply(rads.eq(i).parent()[0]);
+                }
+            }
+        }
+    })
+</script>
+</body>
