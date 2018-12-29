@@ -40,7 +40,7 @@ function tableGet(elem, data,all) {
     function checkRadio(nub, num) {
         data[nub].check.on = num;
     }
-
+    //以闭包的形式获取每一次循环的数值
     //遍历所有的数据
     for (var i = 0; i < data.length; i++) {
         (function (i) {
