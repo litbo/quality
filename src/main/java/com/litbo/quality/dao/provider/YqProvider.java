@@ -44,6 +44,9 @@ public class YqProvider {
                 if(yq.getJcyqJzTime()!=null){
                     SET(" jcyq_jz_time = #{jcyqJzTime,jdbcType=TIMESTAMP}");
                 }
+                if(yq.getMbId()!=null){
+                    SET(" mb_id = #{mbId}");
+                }
                 WHERE("jcyq_id=#{jcyqId}");
             }
         }.toString();

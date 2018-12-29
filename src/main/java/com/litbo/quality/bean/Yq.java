@@ -30,5 +30,6 @@ public class Yq {
 
     private Date jcyqJzTime;
 
+    private String mbId;
 
 }

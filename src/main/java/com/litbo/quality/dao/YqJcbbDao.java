@@ -28,4 +28,6 @@ public interface YqJcbbDao {
             "      #{jcyqId,jdbcType=VARCHAR}, #{eqId,jdbcType=VARCHAR}, #{jcbbJcrId,jdbcType=VARCHAR}, \n" +
             "      #{jcbbShrId,jdbcType=VARCHAR}, #{jcbbShStatus,jdbcType=INTEGER})")
     int insertYqJcbb(YqJcbb yqJcbb);
+
+
 }
