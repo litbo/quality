@@ -84,7 +84,7 @@ public class YqController {
     }
 
 
-    @RequestMapping("taskYq")
+    @RequestMapping(value = "taskYq",method = RequestMethod.GET)
     public Result taskYq(){
         try {
             List list = yqService.taskYq();
@@ -95,4 +95,5 @@ public class YqController {
 
     }
 }
+
 

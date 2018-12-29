@@ -7,13 +7,13 @@ import java.util.Date;
 public class YqMould {
     private Integer mbId;
 
-    private String jcyqId;
-
     private Date createTime;
 
     private Integer mbStatus;
 
     private String data;
+
+    private String mbName;
 
 
 }

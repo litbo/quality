@@ -23,6 +23,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @GetMapping("/addUserRole")
     public Result addUserRole(YqRole yqRole){
         try {

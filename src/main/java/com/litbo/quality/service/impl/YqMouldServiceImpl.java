@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class YqMouldServiceImpl implements YqMouldService {
@@ -21,5 +22,10 @@ public class YqMouldServiceImpl implements YqMouldService {
     public int updateYqMould(YqMould yqMould) {
         yqMould.setCreateTime(new Date());
         return mouldDao.updateYqMould(yqMould);
+    }
+
+    @Override
+    public List<YqMould> listYqMould() {
+        return mouldDao.listYqMould();
     }
 }

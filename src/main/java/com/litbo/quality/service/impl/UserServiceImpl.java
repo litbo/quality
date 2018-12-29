@@ -7,6 +7,7 @@ import com.litbo.quality.bean.YqRole;
 import com.litbo.quality.dao.UserDao;
 import com.litbo.quality.dao.YqJcbbDao;
 import com.litbo.quality.dao.YqRoleDao;
+import com.litbo.quality.enums.EnumUserRole;
 import com.litbo.quality.service.UserService;
 import com.litbo.quality.vo.UserInfo;
 import com.litbo.quality.vo.UserRole;
@@ -32,6 +33,41 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private YqJcbbDao yqJcbbDao;
 
+
+    @Override
+    public List<String> userRole(String userId) {
+        List<Integer> roles = yqRoleDao.getRole(userId);
+        List<String> roleList = new ArrayList<>();
+        for (Integer role : roles) {
+            if(role == 1){
+                roleList.add(EnumUserRole.USER_ROLE_SH.getRole());
+            }
+            if(role == 2){
+                roleList.add(EnumUserRole.USER_ROLE_JC.getRole());
+            }
+            if(role == 0){
+                roleList.add(EnumUserRole.USER_ROLE_ADMIN.getRole());
+            }
+        }
+        return roleList;
+    }
+
+    @Override
+    public List<String> getRole(String userId) {
+        List<Integer> roleStatus = yqRoleDao.getRole(userId);
+        List<String> roles = new ArrayList<>();
+        for (Integer i : roleStatus) {
+            List<String> role = yqRoleDao.getRoles(userId, i);
+            roles.addAll(role);
+        }
+        return roles;
+    }
+
+    @Override
+    public SUser getUserByUserName(String username) {
+        SUser user = userDao.getUserByUserName(username);
+        return user;
+    }
 
     @Override
     public UserInfo getUserInfo(String userId) {
