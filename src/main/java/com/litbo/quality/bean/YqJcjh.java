@@ -14,11 +14,10 @@ public class YqJcjh {
 
     private String shrId;
 
-    private String jcrId;//检测人id
-
     private String fbrId;
 
     private Date creatTime;
 
     private Date wcTime;
+
 }

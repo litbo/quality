@@ -21,4 +21,6 @@ public class YqJcbb {
 
     private String data;
 
+    private Integer jcjhId;
+
 }
