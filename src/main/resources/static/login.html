@@ -65,7 +65,7 @@
         form.on('submit(login)', function (data) {
             $.ajax({
                 url:"",
-                data:{action:"login",name:"",pass:data.field.username.field.password},
+                data:{action:"login",name:data.field.username,pass:data.field.password},
                 method:"POST",
                 success:function(das){
                     //das : 成功返回数据
