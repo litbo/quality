@@ -2,12 +2,13 @@ package com.litbo.quality.dao;
 
 import com.litbo.quality.bean.YqJcbb;
 import com.litbo.quality.dao.provider.YqJcbbProvider;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.SelectProvider;
+import com.litbo.quality.vo.ListJcbbByUserId;
+import com.litbo.quality.vo.ListJcjhByUserId;
+import com.litbo.quality.vo.SelectYqJcbbByIdVo;
+import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author zjc
@@ -29,5 +30,12 @@ public interface YqJcbbDao {
             "      #{jcbbShrId,jdbcType=VARCHAR}, #{jcbbShStatus,jdbcType=INTEGER})")
     int insertYqJcbb(YqJcbb yqJcbb);
 
+    @SelectProvider(type = YqJcbbProvider.class,method = "listYqJcbb")
+    List<ListJcbbByUserId> listYqJcbb(@Param("userId") String userId, @Param("status") Integer status);
 
+    @Update("update yq_jcbb set jcbb_sh_status = #{status},jcbb_shr_id = #{userId},jcjh_id=#{jcjhId} where jcbb_id = #{jcbbId}")
+    int updateYqJcjhStatus(@Param("jcbbId") Integer jcbbId, @Param("status") Integer status,
+                           @Param("userId") String userId, @Param("jcjhId") Integer jcjhId);
+    @SelectProvider(type = YqJcbbProvider.class,method = "selectYqJcbbById")
+    SelectYqJcbbByIdVo selectYqJcbbById(Integer jcbbId);
 }

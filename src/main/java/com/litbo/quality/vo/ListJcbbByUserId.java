@@ -1,14 +1,16 @@
 package com.litbo.quality.vo;
 
+
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
 
 import java.util.Date;
 
-@Data
-public class SelectTaskYq {
-    private String jcyqId;
+@lombok.Data
+public class ListJcbbByUserId {
+    private  String name;
+    private  String jcbbId;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date jcyqJzTime;
-    private String task;
+    private Date creatTime;
+    private  String eqId;
+
 }
