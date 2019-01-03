@@ -179,11 +179,24 @@
         </div>
     </div>
     <script>
-        $(function(){
-            $.ajax({
-                url:"",
+        Jajax({
+            url:"#",
+            data:{pageSize:6},
+            success:function(data){
+                var $ul = $(".am-panel-bd ul");
+                for(var i=0;i<$ul.length;i++){
 
-            })
-        })
+                }
+                $ul.append(
+                    $("<li>").append(
+                        $("<a>").attr({"href":"#","class":"am-cf"}).append(
+                            $("<span>").attr("class","am-fl").append(res.data.name)
+                        ).append(
+                            $("<span>").attr("class","am-fr").append(res.data.time)
+                        )
+                    )
+                )
+            }
+        });
     </script>
 </body>
